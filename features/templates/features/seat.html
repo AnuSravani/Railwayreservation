@@ -1,0 +1,123 @@
+{% extends 'features/srbase.html' %}
+
+{% block body %}
+{% load static %}
+    <h2 style="text-align:center;"><span class="sty" style="font-size:50px;color:black;">Search Trains </span></h2>
+    <br/><br/>
+    <br/><br/>
+    <!-- <form class="form-inline" style="margin-left:200px;"action="trains" method="POST">
+        {% csrf_token %}
+        <span class="sty" style="font-size:30px;color:black;">Source:</span><select name="src">
+            {% for i in a %}
+            <option value="{{i.sid}}">{{i.sname}}</option>
+            {%endfor%}
+        </select>
+        <span class="sty" style="font-size:30px;color:black;">Destination:</span>
+        <select name="des">
+            {% for i in a %}
+            <option value="{{i.sid}}">{{i.sname}}</option>
+            {%endfor%}
+        </select>
+        &nbsp
+        <input class="btn btn-success" type="submit" value="Search">
+    </form> -->
+
+    <style>
+
+        th,tr{
+            text-align: center;
+        }
+        table{
+
+            margin-top: 20px;
+        }
+        #head{
+            background-color: #0f52ba;
+            color: white;
+            font-size: 20px;
+        }
+        tr:hover td{
+            background-color: rgb(113, 167, 184);;
+            font-size:20px ;
+        }
+        tr:nth-of-type(odd){
+            background-color: #eee;
+
+        }
+        
+        .btninaddtrain{
+
+            border-radius: 5px;
+            height: 35px;
+            width: 80px;
+            border: none;
+            background-color: #26619c;
+            color: white;
+            margin-top: -76px;
+            /* margin-left: 100px; */
+            margin-left: 664px;
+            position: absolute;
+            /* margin-left: 100px;
+          }
+        
+        
+    </style>
+    <form action="" method="GET">
+  {%csrf_token%}
+        <div class="searchbar">
+            <input type="text" 
+                   placeholder="Search"  name="q" value="{{ query }}" style="position: absolute;
+    margin-left: 500px;
+    margin-top: -63px;
+    height: 43px;
+    width: 293px;
+    border-radius: 11px;
+    border-color: #b9b9d9;">
+            <div class="searchbtn">
+              <button type="submit" style="border:none"><img src=
+                "{% static 'images/searchbtn.png' %}"
+                                    class="icn srchicn" 
+                                    alt="search-icon" style="    height: 32px;
+    position: absolute;
+    margin-top: -72px;
+    margin-left: 750px;" ></button>
+              <!-- <img src=
+"{% static 'images/adminsearch.png' %}"
+                    class="icn srchicn" 
+                    alt="search-icon" > -->
+              </div>
+        </div>
+      </form>
+      <a href="{%url 'home:hom'%}" style="color:white;" ><button class="btninaddtrain" style="       position: absolute;
+    margin-left: 822px;
+    margin-top: -78px">Homepage</button></a>
+    <div class="container" style="background:lightblue; ">
+        <table class="table table-bordered">
+                <tr id="head">
+                    <th> Train Name </th>
+                 <th> Train Number</th>
+
+                    <th>station_name</th>
+                    <th>location</th>
+                    <th> schdule_date </th>
+                    <th> departure_time</th>
+                    <th>arrivaltime</th>
+                    <th> Book</th>
+                </tr>
+                
+                {% for i in all %}
+                <tr>
+                    <td>{{i.train_name}}</td>
+                    <td>{{i.train.train_number}}</td>
+                    <td>{{i.station.station_name}}</td>
+                    <td>{{i.station.location}}</td>
+                    <td>{{i.schdule_date}}</td>
+                    <td>{{i.departure_time}}</td>
+                    <td>{{i.arrival_time}}</td>
+                    <td><a href="{% url 'pay' i.train.train_id %}" class="btn btn-primary"> Book Seat </a></td>
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+    
+{% endblock%}

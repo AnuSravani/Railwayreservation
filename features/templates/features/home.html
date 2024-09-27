@@ -1,0 +1,37 @@
+{% extends 'features/base.html' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row1 row">
+            <div class="col-lg-4">
+                <span class="sty" style="font-size:40px;">Railway Reservation System</span>
+            </div>
+            <div class="col-lg-6"></div>
+            <div class="col-lg-1"><span class="sty" style="    font-size: 36px;margin-left: -218px;">Welcome:{{request.user}}</span></div>
+            <div class="col-lg-1"><a href="logout"><button class="btn btn-danger" style="margin-top: 11px;
+">Log Out</button> </a></div>
+        </div>
+        <div class="row" style="margin-top:400px;">
+            <div class="col-lg-1"></div>
+            {% if request.user.is_superuser %}
+            <h1 style="position: absolute;
+            margin-top: -315px;
+            margin-left: 506px;
+            color: blac"> Admin Homepage</h1>
+
+            <a href="addT"><button class="btn btn-basic">Add Trains</button></a>
+            <a href="addST"><button class="btn btn-primary">Add Stations</button></a>
+            <a href="reservationview"><button class="btn btn-warning">Add Reservations</button></a>
+            <a href="scheduleview"><button class="btn btn-default">Add Schedules</button></a>
+
+            {% endif %}
+             <a href="searchtrain"><button class="btn btn-success">Search/Book Trains</button></a>
+             <a href="scheduledetails"><button class="btn btn-info">Check Schedule</button></a>
+             {% comment %} <a href="pnr"><button class="btn btn-warning">Check PNR</button></a> {% endcomment %}
+             <a href="{% url 'reservedetail' %}"><button class="btn btn-default">Cancel Seat</button></a>
+
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+
+{% endblock %}

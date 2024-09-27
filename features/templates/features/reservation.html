@@ -1,0 +1,90 @@
+{% extends 'features/srbase.html'%}
+{% block body%}
+
+
+
+<style>
+    .trainintropic{
+        width: 100%;
+        height: 620px;
+    }
+    .inputvalue{
+        width: 752px;
+        border-radius: 5px;
+        height: 50px;
+    }
+    .t_heading{
+        font-size: 30px;
+    }
+    .for-form-align{
+        margin-left: 176px;
+        margin-top: 18px;
+    }
+    .submitbtninaddtrain{
+        border-radius: 5px;
+        height: 35px;
+        width: 76px;
+        border: none;
+        background-color: #26619c;
+        color: white;
+        margin-top: 10px;
+        margin-left: 332px;
+    }
+
+   
+        .btninaddtrain{
+      
+          border-radius: 5px;
+          height: 35px;
+          width: 80px;
+          border: none;
+          background-color: #26619c;
+          color: white;
+          margin-top: 9px;
+          /* margin-left: 100px; */
+          margin-left: 664px;
+          position: absolute;
+          /* margin-left: 100px;
+        }
+      
+</style>
+
+
+<h2 style="text-align:center;"><span class="sty" style="font-size:50px;color:black;">Add Reservations</span></h2>
+
+<div class="container" style="background-color: #6daeddf1 ;height: 540px;border-radius: 10px;opacity:0.9">
+    <div class="for-form-align" >
+        <form action="" method="post">
+            {%csrf_token%} 
+            <label class="t_heading" for=""><b>Train name</b></label><br>
+            <input class="inputvalue" type="text" placeholder="Enter Train Name" name="train_name"><br><br>
+            <label class="t_heading" for=""><b>Seat Number</b></label><br>
+            <input class="inputvalue" type="text" placeholder="Enter seat Number" name="seat_reserved"><br><br>
+            <label class="t_heading" for=""><b>E-Mail</b></label><br>
+            <input class="inputvalue" type="email" placeholder="Enter your Mail" name="email"> <br> <br>
+            <label class="t_heading" for=""><b>Reservation Date</b></label><br>
+            <input class="inputvalue" type="date" placeholder="" name="reservation_date"> <br> <br>
+            <button class="submitbtninaddtrain">Submit</button>
+        </form>
+
+        <a href="{%url 'home:hom'%}" style="color:white;" ><button class="btninaddtrain" style="    position: absolute;
+    margin-left: 429px;
+    margin-top: -35px;">Homepage</button></a>
+
+    </div>
+</div>
+
+{% comment %} <form action="" method="post">
+    {%csrf_token%}
+    Train Number:<input type="text" ><br><br>
+    Train Name:<input type="text" ><br><br>
+    capacity: <input type="text"  ><br><br> {% endcomment %}
+  
+    {% comment %} Select Route:<select name="rid">
+    {%for i in tr%}
+        <option value="{{i.rid}}">{{i.ostation}}-{{i.dstation}}</option>
+    {%endfor%} {% endcomment %}
+{% comment %} </select> {% endcomment %}
+    {% comment %} <input type="submit" class="btn btn-success">
+</form> {% endcomment %}
+{%endblock%}

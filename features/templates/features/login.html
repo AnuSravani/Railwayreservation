@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+     {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <style>
+        body{
+            background-image:url('{% static "images/metrobg.jpg" %}');
+            background-repeat:no-repeat;
+            background-size: cover;
+            position: fixed;
+            height: 728px;
+
+
+        }
+        .mydiv{
+            width: 370px;
+            height: 295px;
+            background-color: white;
+            border-radius: 10px;
+            position: absolute;
+            margin-left: 573px;
+            margin-top: 190px;
+            background: linear-gradient(45deg,gray,rgb(187, 185, 185),rgb(97, 93, 93));
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+           
+        }
+        input{
+            border: none;
+            border-radius: 5px;
+            border-bottom: 2px solid black;
+        }
+        .loginbtn{
+            border-radius: 5px;
+            border: none;
+            color: white;
+            background: linear-gradient(45deg,  rgb(105, 233, 105),rgb(26, 120, 5));
+            margin-left: 73px;
+            margin-top: 15px;
+            width: 69px;
+            height: 35px;
+        }
+        .regbtn{
+            border-radius: 5px;
+            border: none;
+            color:white
+            width: 69px;
+            height: 31px;
+
+            background: linear-gradient(45deg, rgb(37, 78, 242), darkblue);
+        }
+    
+
+    </style>
+</head>
+<body>
+   
+
+            <div class="mydiv">
+                <center><h2 style="font-family: font-awesome;color: white;"><b>LOGIN</b></h2></center><br><br>
+                <form action="" method="post">
+                {% csrf_token %}
+    
+                <div style="margin-left: 30px;">
+                <label for="">Username :</label>&nbsp;&nbsp; <input type="text" name="username"><br><br>
+                <label for="">Password :</label>&nbsp;&nbsp; <input type="password" name="password"><br><br>
+                <button class="loginbtn">Login</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                </form>
+                
+                <button class="btn btn-success" ><a href="/register/">Register</a></button>
+
+        </div>
+
+
+   
+</body>
+</html>

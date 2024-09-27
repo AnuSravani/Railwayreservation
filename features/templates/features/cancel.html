@@ -1,0 +1,122 @@
+{% extends 'features/srbase.html' %}
+{%block body%}
+    <h1 style="text-align:center;font-family:sans-seriff">Current Reservations</h1>
+    <style>
+        
+        th,tr{
+            text-align: center;
+        }
+        table{
+
+            margin-top: 25px;
+        }
+        #head{
+            background-color: #c86f9d;
+            color: white;
+            font-size: 15px;
+        }
+        /* tr:hover td{
+            background-color: rgb(50, 170, 207);
+            font-size:20px ;
+        } */
+        tr:nth-of-type(odd){
+            background-color: rgb(50, 170, 207);
+
+        }
+        
+        .hel{
+            width:132px;
+        }
+        
+        .btninaddtrain{
+
+            border-radius: 5px;
+            height: 35px;
+            width: 80px;
+            border: none;
+            background-color: #26619c;
+            color: white;
+            margin-top: -76px;
+            /* margin-left: 100px; */
+            margin-left: 684px;
+            position: absolute;
+            /* margin-left: 100px;
+          }
+    </style>
+    <a href="{%url 'home:hom'%}" style="color:white;" ><button class="btninaddtrain" style="    position: absolute;
+          margin-left: 910px;
+    margin-top: -48px;
+">Homepage</button></a>
+<div class="container-fluid" style="background:rgb(50, 170, 207); ">
+    <table class="table table-bordered">
+            <tr id="head">      
+                <th>user</th>
+                {% comment %} <th>email</th>
+                <th>phone</th> {% endcomment %}
+                <th>Train name</th>
+                <th>Train number </th>
+                <th>capacity</th>
+                <th>arrival_time</th>
+                <th>departure_time</th>
+                <th>reservation_date</th>
+                <th>seat_reserved</th>
+                <th>station_name</th>
+                <th>location</th>
+                <th>schdule_date</th>
+                <th class="hel">Actions</th>
+            </tr>
+            {%for i in reservedata%}
+            <tr>
+                <td>{{i.user.username}}</td>
+                {% comment %} <td>{{i.user.email}}</td>
+                <td>{{i.user.number}}</td> {% endcomment %}
+                <td>{{i.train.train_name}}</td>
+                <td>{{i.train.train_number}}</td>
+                <td>{{i.train.capacity}}</td>
+                <td>{{i.shedule.arrival_time}}</td>
+                <td>{{i.shedule.departure_time}}</td>
+                <td>{{i.reservation_date}}</td>
+                <td>{{i.seat_reserved}}</td>
+                <td>{{i.shedule.station.station_name}}</td>
+                <td> {{i.shedule.station.location}}</td>
+                <td>{{i.shedule.schdule_date}}</td>
+
+                <td>
+                  {%if i.cancelstatus == 1%}
+                    <p style="color:rgb(243, 23, 15)">canceled</p>
+                  {%else%}
+                <button class="btn btn-success"><a href="{% url 'pay' i.train.train_id %}" style="color:white">Confirm</a></button>
+                <button type="submit" class="btn btn-danger"><a href="{% url 'cancel' i.reservastion_id %}">X</a></button>
+                {%endif%}
+            </td>
+            {%endfor%}
+        </table>
+       </div>
+
+</div>
+
+     <script>
+     function y(vl)
+    {
+
+
+
+        $.ajax({
+            type:'POST',
+            url:'cancel/cn/',
+            data:{
+                    id:vl,
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+
+                  },
+        success:function(data){
+
+            alert("Cancelled Tickets||Amount Refunded:"+data);
+            window.location.href=window.location.href;
+                               }
+            }
+                )
+
+    }
+    </script>
+{%endblock%}

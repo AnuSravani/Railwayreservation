@@ -1,0 +1,84 @@
+{% extends 'features/srbase.html'%}
+{% block body%}
+
+
+
+<style>
+    .trainintropic{
+        width: 100%;
+        height: 520px;
+    }
+    .inputvalue{
+        width: 752px;
+        border-radius: 5px;
+        height: 50px;
+    }
+    .t_heading{
+        font-size: 20px;
+    
+    }
+    .for-form-align{
+        margin-left: 176px;
+        margin-top: 75px;
+    }
+    .submitbtninaddtrain{
+        border-radius: 5px;
+        height: 35px;
+        width: 76px;
+        border: none;
+        background-color: #26619c;
+        color: white;
+        margin-top: 10px;
+        margin-left: 332px;
+    }
+    .btninaddtrain{
+
+        border-radius: 5px;
+        height: 35px;
+        width: 80px;
+        border: none;
+        background-color: #26619c;
+        color: white;
+        margin-top: -76px;
+        /* margin-left: 100px; */
+        margin-left: 664px;
+        position: absolute;
+        /* margin-left: 100px;
+      }
+</style>
+
+
+<h2 style="text-align:center;"><span class="sty" style="font-size:50px;color:black;">Add Schedules</span></h2>
+
+<div class="container" style="background-color: #6daeddf1 ;height: 440px;border-radius: 10px;opacity:0.8">
+    <div class="for-form-align">
+        <form action="" method="post">
+            {%csrf_token%} 
+            <label class="t_heading" for=""><b>Train Name</b></label><br>
+            <input class="inputvalue" type="text" placeholder="Enter Train Name" name="train_name"><br><br>
+            <label class="t_heading" for=""><b>Station Name</b></label><br>
+            <input class="inputvalue" type="text" placeholder="Enter station_name" name="station_name"><br><br>
+            <label class="t_heading" for=""><b>Departure Time</b></label><br>
+            <input class="inputvalue" type="time" placeholder="Enter departure Time" name="departure_time"><br><br>
+            <button class="submitbtninaddtrain">Submit</button>
+        </form>
+        <a href="{%url 'home:hom'%}" style="color:white;" ><button class="btninaddtrain" style="    position: absolute;
+            margin-left: 429px;
+            margin-top: -35px;">Homepage</button></a>
+    </div>
+</div>
+   
+{% comment %} <form action="" method="post">
+    {%csrf_token%}
+    Train Number:<input type="text" ><br><br>
+    Train Name:<input type="text" ><br><br>
+    capacity: <input type="text"  ><br><br> {% endcomment %}
+  
+    {% comment %} Select Route:<select name="rid">
+    {%for i in tr%}
+        <option value="{{i.rid}}">{{i.ostation}}-{{i.dstation}}</option>
+    {%endfor%} {% endcomment %}
+{% comment %} </select> {% endcomment %}
+    {% comment %} <input type="submit" class="btn btn-success">
+</form> {% endcomment %}
+{%endblock%}
